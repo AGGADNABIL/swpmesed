@@ -1,0 +1,146 @@
+<form > <!--  [formGroup]="formGrpCmd" -->
+<section class="content-header">
+  <h1>
+    Préparation
+    <small>Commande</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i>Préparation</a></li>
+    <li class="active">Commannde</li>
+  </ol>
+</section>
+<section>
+  <div class="row" style="margin-top: 10px;">
+    <div class="box ">
+      <div class="col-md-4 col-sm-4">
+
+        <div class="box box-primary voffset2">
+          <div class="box-header">
+            <h3 class="box-title">Période de visualisation </h3>
+          </div>
+          <div class="box-body">
+            <!-- Date dd/mm/yyyy -->
+            <div class="form-group">
+              <div class="col-sm-6 col-md-6">
+                <label class="label-control">Compte client :</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <label>Description :</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-6 col-md-6">
+                <label class="label-control">Date début :</label>
+                <input type="date" class="form-control">
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <label>Date fin:</label>
+                <input type="date" class="form-control">
+              </div>
+            </div>
+            <div class="row voffset2">
+              <div class="form-group">
+                <div class="col-sm-12 voffset2">
+                  <button type="submit" class="btn btn-info pull-right">Rechercher</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4">
+          <div class="box box-primary voffset2">
+            <div class="box-header">
+              <h3 class="box-title">Commande référence :</h3>
+            </div>
+            <div class="box-body">
+              <div class="form-group">
+                <label>Date correspondant à la période :</label>
+
+                <select class="form-control">
+                  <option>Date de création</option>
+                  <option>Date de préparation</option>
+                  <option>Date de livraison</option>
+                  <option>Date d'édition</option>
+                  <option>date de modification</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon myaddon">Réf. Commande :</span>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-12 voffset2">
+                      <button type="submit" class="btn btn-info pull-right">Rechercher</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="content-content">
+  <div class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="" (click)="listCmdEnSaisie()" data-toggle="tab" aria-expanded="false">En Saisie</a></li>
+      <li class=""><a href=""  data-toggle="tab" aria-expanded="false">En Vague</a></li>
+      <li class=""><a href="" (click)="listCmdEnPreparation()" data-toggle="tab" aria-expanded="false">En Préparation</a></li>
+      <li class=""><a href="" (click)="listCmdValider()" data-toggle="tab" aria-expanded="false">Validée</a></li>
+      <li class=""><a href="" (click)="listCmdMiseExpedition()" data-toggle="tab" aria-expanded="false">Mise en expédition</a></li>
+      <li class=""><a href="" (click)="listCmdExpedier()"data-toggle="tab" aria-expanded="true">Expédiée</a></li>
+      <li class=""><a href="" (click)="getAll()" data-toggle="tab" aria-expanded="true">Tous</a></li>
+      <li class="pull-right"><a routerLink="/addCommande" data-toggle="tab" aria-expanded="true" alt="Nouvelle Commande"><i class="fa fa-plus"></i></a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" >
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title"></h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>N° Commande </th>
+                  <th>Réf. Command</th>
+                  <th>Statut</th>
+                  <th>Action</th>
+                </tr>
+                <tr *ngFor="let cmd of listeCommandes">
+                  <td>{{ cmd.numCommande }}</td>
+                  <td>{{ cmd.refCommande }}</td>
+                  <td>{{ cmd.statut }}</td>
+                  <td>
+                    <span class="badge bg-red voffset3"><i class="fa fa-trash"></i></span>
+                    <span class="badge bg-blue voffset3"><i class="fa fa-edit"></i></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <li><a href="#">«</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">»</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.tab-content -->
+  </div>
+</section>
+</form>
